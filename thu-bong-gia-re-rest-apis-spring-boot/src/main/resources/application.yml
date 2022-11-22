@@ -1,0 +1,10 @@
+#eureka client config
+
+spring:
+ application:
+  name: ORDER-SERVICE
+ config:
+  import:optional:configserver:
+ cloud:
+  config:
+   uri: http://localhost:8888
