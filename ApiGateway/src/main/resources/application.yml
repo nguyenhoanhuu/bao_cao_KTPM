@@ -1,0 +1,41 @@
+server:
+ port: 8085
+spring:
+ config:
+  import: "optional:configserver:"
+ application:
+  name: API-GATEWAY
+ cloud:
+  config:
+   uri: http://localhost:8888
+  gateway:
+   routes:
+   - id: productService
+     uri: http://localhost:8080/
+     predicates:
+     - Path=/products/**
+   - id: userService
+     uri: http://localhost:8083/
+     predicates:
+     - Path=/users/** 
+   - id: customerService
+     uri: http://localhost:8082/
+     predicates:
+     - Path=/customers/**
+   - id: promotionService
+     uri: http://localhost:8080/
+     predicates:
+     - Path=/promotions/**
+   - id: productInventoryService
+     uri: http://localhost:8082/
+     predicates:
+     - Path=/productInventory/**
+   - id: productInventoryService
+     uri: http://localhost:8081/
+     predicates:
+     - Path=/carts/**
+   - id: productInventoryService
+     uri: http://localhost:8081/
+     predicates:
+     - Path=/orders/**
+   
